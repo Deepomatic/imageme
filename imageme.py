@@ -293,7 +293,7 @@ def _create_index_files(root_dir, force_no_processing=False):
         # Sort the subdirectories by name
         dirs = sorted(dirs)
         # Get image files - all files in the directory matching IMAGE_FILE_REGEX
-        image_files = [f for f in files if re.match(IMAGE_FILE_REGEX, f)]
+        image_files = [f for f in files if re.match(IMAGE_FILE_REGEX, f, re.IGNORECASE)]
         # Sort the image files by name
         image_files = sorted(image_files)
         # Create this directory's index file and add its name to the created
