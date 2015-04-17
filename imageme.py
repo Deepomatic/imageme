@@ -148,7 +148,7 @@ def _create_index_file(
             '		 <script>', 
             '			$(document).ready(function() {',
             '				toRm = [];',
-            '				$("a").click(function( event ) {',
+            '				$("a.img").click(function( event ) {',
             '			    	event.preventDefault();',
             '					if (toRm.indexOf($(this).attr("href")) < 0) {',
             '			    		toRm.push($(this).attr("href"));',
@@ -229,7 +229,7 @@ def _create_index_file(
             )
             html += [
                 '    <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">',
-                '    <a href="' + link_target + '">',
+                '    <a class="img" href="' + link_target + '">',
                 '        <img class="image" src="' + img_src + '">',
                 '    </a>',
                 '    </li>'
