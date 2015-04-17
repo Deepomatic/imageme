@@ -139,8 +139,38 @@ def _create_index_file(
             '            ul li img {',
             '                cursor: pointer;',
             '            }',
+            '			 .selected img {',
+            '				filter: grayscale(100%);',
+            '				-webkit-filter: grayscale(100%);',
+            '			 }',
             '            .image {max-width: 100%; max-height: 100%; border-radius: 0.3em;}', 
             '        </style>',
+            '		 <script>', 
+            '			$(document).ready(function() {',
+            '				toRm = [];',
+            '				$("a").click(function( event ) {',
+            '			    	event.preventDefault();',
+            '					if (toRm.indexOf($(this).attr("href")) < 0) {',
+            '			    		toRm.push($(this).attr("href"));',
+            '						$(".header-rm").empty();',
+            '						toRm.forEach(function (e) {',
+            '							$(".header-rm").append(e+" ");',
+            '						});',
+            '						$(this).addClass("selected");'
+            '					} else { ',
+            '						val = $(this).attr("href");',
+            '			    		toRm = $.grep(toRm, function(value) {',
+  			'							return value !==  val;',
+  			'						});',
+            '						$(".header-rm").empty();',
+            '						toRm.forEach(function (e) {',
+            '							$(".header-rm").append(e+" ");',
+            '						});',
+            '						$(this).removeClass("selected");'
+            '					}',
+            '				});',
+			'           });',
+			' 		</script>',
             '    </head>',
             '    <body>',
             '    <div class="content">',
@@ -162,6 +192,12 @@ def _create_index_file(
                 '    <a href="' + link + '">' + directory + '</a>',
                 '    </h3>'
             ]
+
+
+        html += [
+        	'<pre class="header-rm"></pre>'
+        ]
+
         # Populate the image gallery table
         # Counter to cycle down through table rows
         table_row_count = 1
