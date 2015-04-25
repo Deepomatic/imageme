@@ -222,6 +222,7 @@ def _create_index_file(
 
         html += [ '</div>']
         html += ['<hr>', '<div class="container">', '<ul class="row">']
+        print image_files[0:10]
         # For each image file, potentially create a new <tr> and create a new <td>
         for image_file in image_files[page*args.num:(page+1)*args.num]:
             # if table_row_count == 1:
@@ -305,11 +306,8 @@ def _create_index_files(root_dir, force_no_processing=False):
 
         order = None
         if (os.path.exists(os.path.join(here, "order.pkl"))):
-        	print "hello"
         	order = joblib.load(os.path.join(here, "order.pkl"))
-        	print order[0:10]
         	images_files = map(lambda x : x[0], order)
-        	print images_files[0:10]
 
         # Create this directory's index file and add its name to the created
         # files list
