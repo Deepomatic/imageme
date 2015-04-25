@@ -153,6 +153,12 @@ def _create_index_file(
             '				filter: none;',
             '				-webkit-filter: none;',
             '			 }',
+            '			#select-all {',
+            '				cursor:pointer', 
+            '			}',
+            '			#unselect-all {',
+            '				cursor:pointer', 
+            '			}',
             '            .image {max-width: 100%; max-height: 100%; border-radius: 0.3em;}', 
             '        </style>',
             '		 <script>', 
@@ -189,6 +195,14 @@ def _create_index_file(
 			'					toRm.forEach(function (e) {',
             '						$(".header-rm").append(e+" ");',
             '					});',
+			'				});',
+			'				$("#unselect-all").on("click", function() {',
+			'					$(".header-rm").empty();',
+			'					toRm = [];',
+			'					$("a.img").each(function (index) {',
+			'						toRm.push($(this).attr("href"));',
+			'						$(this).removeClass("selected");',
+			'					});',
 			'				});',
 			'           });',
 			' 		</script>',
@@ -236,6 +250,7 @@ def _create_index_file(
         if page < num_pages - 1:
         	html += ['	<a href="'+_get_index_file_name(page=page+1)+'">NEXT PAGE</a>&nbsp;']
         	html += ['&nbsp;&nbsp;	<a id="select-all">Select all images</a>&nbsp;']
+        	html += ['&nbsp;&nbsp;	<a id="unselect-all">Unselect all images</a>&nbsp;']
 
         html += [ '</div>']
         html += ['<hr>', '<div class="container">', '<ul class="row">']
