@@ -179,6 +179,14 @@ def _create_index_file(
             '						$(this).removeClass("selected");'
             '					}',
             '				});',
+			'				$("#select-all").click(function (ev) {',
+			'					$(".header-rm").empty();',
+			'					toRm = [];',
+			'					$("a.img").each(function (index) {',
+			'						toRm.push($(this).attr("href"));',
+			'						$(this).addClass("selected");',
+			'					})',
+			'				});',
 			'           });',
 			' 		</script>',
             '    </head>',
@@ -224,6 +232,7 @@ def _create_index_file(
         		html += ['	<span style="font-weight:700">'+ str(i) + '</span>&nbsp;']
         if page < num_pages - 1:
         	html += ['	<a href="'+_get_index_file_name(page=page+1)+'">NEXT PAGE</a>&nbsp;']
+        	html += ['&nbsp;&nbsp;	<a id="#select-all">Select all images</a>&nbsp;']
 
         html += [ '</div>']
         html += ['<hr>', '<div class="container">', '<ul class="row">']
