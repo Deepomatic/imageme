@@ -111,6 +111,7 @@ def _create_index_file(
 
     num_pages = len(image_files)/ args.num +1
     index_file_paths = []
+    print image_files[0:10]
     for page in range(0, num_pages):
         # Put together HTML as a list of the lines we'll want to include
         # Issue #2 exists to do this better than HTML in-code
@@ -222,7 +223,6 @@ def _create_index_file(
 
         html += [ '</div>']
         html += ['<hr>', '<div class="container">', '<ul class="row">']
-        print image_files[0:10]
         # For each image file, potentially create a new <tr> and create a new <td>
         for image_file in image_files[page*args.num:(page+1)*args.num]:
             # if table_row_count == 1:
