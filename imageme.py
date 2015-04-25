@@ -14,6 +14,11 @@ what's called.
 import base64, io, os, re, sys, threading, SimpleHTTPServer, SocketServer
 import argparse
 
+import pandas as pd
+import numpy as np
+import joblib
+
+
 # Attempt to import PIL - if it doesn't exist we won't be able to make use of
 # some performance enhancing goodness, but imageMe will still work fine
 PIL_ENABLED = False
