@@ -339,7 +339,7 @@ def _create_index_files(root_dir, force_no_processing=False):
         order = None
         if (os.path.exists(os.path.join(here, "order.pkl"))):
         	order = joblib.load(os.path.join(here, "order.pkl"))
-        	image_files = map(lambda x : x[0], order)
+        	image_files = map(lambda x : os.path.basename(x[0]), order)
 
         # Create this directory's index file and add its name to the created
         # files list
