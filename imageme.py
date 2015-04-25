@@ -147,6 +147,7 @@ def _create_index_file(
             '			 .selected img {',
             '				filter: grayscale(100%) brightness(60%);',
             '				-webkit-filter: grayscale(100%) brightness(60%);',
+            '				border: 4px solid blue;',
             '			 }',
             '			 .selected img:hover {',
             '				filter: none;',
