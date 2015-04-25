@@ -341,7 +341,10 @@ def _create_index_files(root_dir, force_no_processing=False):
         order = None
         if (os.path.exists(os.path.join(here, "order.pkl"))):
         	order = joblib.load(os.path.join(here, "order.pkl"))
-        	image_files = map(lambda x : os.path.basename(x[0]), order)
+        	list_files = map(lambda x : os.path.basename(x[0]), order)
+        	list_files = filter(lambda x : x in image_files, list_files)
+
+        	image_files = list_files
 
         # Create this directory's index file and add its name to the created
         # files list
