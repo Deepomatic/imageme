@@ -296,6 +296,13 @@ def _create_index_files(root_dir, force_no_processing=False):
         image_files = [f for f in files if re.match(IMAGE_FILE_REGEX, f, re.IGNORECASE)]
         # Sort the image files by name
         image_files = sorted(image_files)
+
+
+        order = None
+        if (os.path.exists(os.path.join(here, "order.pkl"))):
+        	order = joblib.load(os.path.join(here, "order.pkl"))
+        	images_files = map(order, lambda x : x[0])
+
         # Create this directory's index file and add its name to the created
         # files list
         created_files = created_files + _create_index_file(
